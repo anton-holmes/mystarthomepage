@@ -17,7 +17,7 @@ def aboutme():
     return render_template('aboutme.html', title='Обо мне')
 
 # if __name__ == "__main__":
-    # app.run(debug=True)
+#     app.run(debug=True, port=5010)
 if __name__ == "__main__":
     from waitress import serve
     serve(app, host="0.0.0.0", port=8080)
