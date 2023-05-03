@@ -76,7 +76,7 @@ Press CTRL+C to quit
 Для того чтобы выключить сервер нажмем комбинацию CTRL+C
 
 При изменении кода проекта в данном режиме запуска сервера требуется его перезапуск. Для того чтобы исправить данное поведение запустим проект в режиме отладки.
-`flask --app hello run --debug`
+`flask --app main run --debug`
 Измените программный код и убедитесь, что сервер автоматически перезагружается.
 
 Вывод будет следующий 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
 4. Создайте файл requirements.txt
 5. Запустите сервер в режиме отладки.
 
-# Шаблоны в Flask
+# Шаблоны в Flask, введение в jinja2
 
 Для использования шаблонов испортируем модуль `render_template`.
 Соответственно первая строчка основного файла, в качестве примера использовался main.py. Будет выглядеть следующим образои
@@ -132,7 +132,7 @@ def aboutme():
 ```
 
 Главная страница сайта выглядит самым простым образом.
-````html
+```html
 <!DOCTYPE html>
 <head>
     <title>FlaskApp</title>
@@ -198,6 +198,7 @@ def index():
 </body>
 </html>
 ```
+![ФОТО1](./image_readme/image1.png)
 
 ФОТО1 IMAGE_README
 
@@ -285,9 +286,10 @@ index.html будет выглядеть следующим образом
 <div style="color: #83cd66">{{title}}</div>
 {% endblock %}
 ```
-Как мы видим aboutme.html унаследовал все от базового шаблона, а поведение index.html мы изменили. 
-фото2
-фото3
+Как мы видим aboutme.html унаследовал все от базового шаблона, а поведение index.html мы изменили.
+
+![ФОТО2](./image_readme/image2.png) 
+![ФОТО3](./image_readme/image3.png)
 
 При помощи функции супер мы можем дописать наследовать шаблон и добавить новые теги
 
@@ -298,8 +300,67 @@ index.html будет выглядеть следующим образом
 <div style="color: #83cd66">{{title}}</div>
 {% endblock %}
 ```
-
 ### Статические файлы
+
+Для добавления статических файлов CSS, JS, изображений. Создадим каталог static, который должен находиться на одном уровне вложенности с файломо main.py, каталогом templates и др.
+
+Добавим изображение при помощи функции url_for в файл index.html.
+
+```html
+<img src={{url_for('static', filename='logo.png')}}>
+```
+
+Добавление CSS добавление JS
+Для добавления создадим каталог CSS и JS в static. Добавим два файла main.css и main.js
+CSS.
+
+Подключим CSS, добавив строчку в тег `head`.
+```html
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+```
+Изменим тег `header` добавив следующее содержимое.
+```html
+    <header>
+        {% block header -%}
+        <div class="container">
+            <h1 class="logo">Ardit's web app</h1>
+            <strong><nav>
+              <ul class="menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('aboutme') }}">About</a></li>
+              </ul>
+            </nav></strong>
+          </div> 
+        <div style="color: #030303">{{title}}</div>
+        {% endblock %}
+    </header>
+```
+
+> Следует отметить, что ссылки на страницы можно создать при помощи *jinja2* `{{ url_for('index') }}`, где index название html файла без расширения.
+
+Подключим JS, добавив строчку в тег `head`.
+
+Добавим в тег `head` скрипт для подключения статического файла js.
+
+```js
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+```
+
+В `base.html` добавим строки, которые позводяют добавить html строку при нажатии на книпку
+```html
+   <h1 id="demo">test</h1>
+   <button type="button" onclick="myFunction()">Попробовать</button>
+```
+
+Добавим в содержимое файла main.js функцию обработчик.
+
+```js
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Параграф изменен.";
+}
+```
+
+
 
 *Практические задания*
 1. Cоздайте стартовую страницу (произвольного содержания). Добавьте шаблон в основной файл flask приложения.

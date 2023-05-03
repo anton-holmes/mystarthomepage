@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>  
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/image/favicon.ico') }}">
 {% block title -%} 
     <title>{{title}}</title>
 {% endblock %}
 </head>
 <body>
+    <h1 id="demo">test</h1>
+    <button type="button" onclick="myFunction()">Попробовать</button>
     <header>
-        {% block header -%} 
+        {% block header -%}
+        <div class="container">
+            <h1 class="logo">Ardit's web app</h1>
+            <strong><nav>
+              <ul class="menu">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('aboutme') }}">About</a></li>
+              </ul>
+            </nav></strong>
+          </div> 
         <div style="color: #030303">{{title}}</div>
         {% endblock %}
     </header>
