@@ -1,27 +1,95 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #444;
-  }
-  /*
-   * Formatting the header area
-   */
-  header {
-    background-color: #DFB887;
-    height: 35px;
-    width: 100%;
-    opacity: .9;
-    margin-bottom: 10px;
-  }
-  header h1.logo {
-    margin: 0;
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    float: left;
-  }
-  header h1.logo:hover {
-    color: #fff;
-    text-decoration: none;
-  }
+  font-family: 'Exo', sans-serif;                                
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  background: linear-gradient(to bottom, #FFFCF7, #98b6c5);
+  /* display: inline-block; */
+}
+
+/* header */
+.myheader {
+  text-align: center;
+  color: #444;
+}
+
+.date-time {
+  font-family: 'Exo', sans-serif;                                     
+  font-size: 25px;
+  font-weight: bold;
+  color: #000;
+  margin: 0 ;
+  padding: 0; 
+}
+
+.date-time span {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+
+/* поисковик */
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  background-color: #fff;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #f1f1f1;
+}
+
+.search-engine-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-engine-wrapper label {
+  margin: 0 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-engine-wrapper input[type="radio"] {
+  display: none;
+}
+
+.search-engine-wrapper input[type="radio"]:checked + label {
+  color: #555;
+}

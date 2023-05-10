@@ -1,17 +1,134 @@
 <!DOCTYPE html>
 <head>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/image/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <link href="https://fonts.cdnfonts.com/css/exo-4" rel="stylesheet">
+                
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>  
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/image/favicon.ico') }}">
 {% block title -%} 
     <title>{{title}}</title>
 {% endblock %}
 </head>
-<body>
-    <h1 id="demo">test</h1>
-    <button type="button" onclick="myFunction()">Попробовать</button>
+<body >
+    <!-- <h1 id="demo">test</h1>
+    <button type="button" onclick="myFunction()">Попробовать</button> -->
+    {% block header -%}
     <header>
-        {% block header -%}
+        <div class="container-fluid">
+            <div class="row myheader">
+                
+              <div class="col-sm">
+
+                <div>
+                  <span id="time" class="date-time"></span>
+                </div>
+                <div>
+                    <span id="date" class="date-time"></span>
+                </div> 
+                <div>
+                    <span id="day" class="date-time"></span>
+                </div>
+                <script>
+                  function updateTime() {
+                    var now = new Date();
+                    var options = {timeZone: "Europe/Moscow"};
+                    var formatter = new Intl.DateTimeFormat([], options);
+                    var dateString = now.toLocaleDateString();
+
+                    var formatter = new Intl.DateTimeFormat([], {hour: 'numeric', minute: 'numeric', ...options});
+                    var timeString = formatter.format(now);
+            
+                    var timeSpan = document.getElementById("time");
+                    timeSpan.innerHTML = timeString;
+
+                    var dateSpan = document.getElementById("date");
+                    dateSpan.innerHTML = dateString;
+            
+                    var daySpan = document.getElementById("day");
+                    daySpan.innerHTML = now.toLocaleDateString('en-US' , {weekday: 'long'});   
+                  }
+            
+                  setInterval(updateTime, 1000);
+                </script>
+              </div>
+
+              <div class="col-sm">
+                Одна из трёх колонок
+              </div>
+              <div class="col-sm">
+                Одна из трёх колонок
+              </div>
+            </div>
+          </div>
+        
+    </header>
+    {% endblock %}
+
+    <form class="search-form">
+        <div class="search-input-wrapper">
+          <input type="text" class="search-input" placeholder="Search">
+          <button type="submit" class="search-button">
+            <i class="fa fa-search"></i>
+        </button>
+        </div>
+        <div class="search-engine-wrapper">
+          <input type="radio" id="google" name="search-engine" value="google" checked>
+          <label for="google">Google</label>
+          <input type="radio" id="yandex" name="search-engine" value="yandex">
+          <label for="yandex">Yandex</label>
+          <input type="radio" id="duckduckgo" name="search-engine" value="duckduckgo">
+          <label for="duckduckgo">DuckDuckGo</label>
+          <input type="radio" id="yahoo" name="search-engine" value="yahoo">
+          <label for="yahoo">Yahoo</label>
+          <input type="radio" id="baidu" name="search-engine" value="baidu">
+          <label for="baidu">Baidu</label>
+        </div>
+      </form>
+
+<script>
+function searchtest() {
+ const form = document.querySelector('.search-form');
+const input = form.querySelector('.search-input');
+const engine = form.querySelectorAll('input[name="search-engine"]');
+const button = form.querySelector('.search-button');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const query = input.value;
+  const selectedEngine = form.querySelector('input[name="search-engine"]:checked').value;
+  switch (selectedEngine) {
+    case 'google':
+      window.location.href = `https://www.google.com/search?q=${query}`;
+      break;
+    case 'yandex':
+      window.location.href = `https://yandex.ru/search/?text=${query}`;
+      break;
+    case 'duckduckgo':
+      window.location.href = `https://duckduckgo.com/?q=${query}`;
+      break;
+    case 'yahoo':
+      window.location.href = `https://search.yahoo.com/search?p=${query}`;
+      break;
+    case 'baidu':
+      window.location.href = `https://www.baidu.com/s?wd=${query}`;
+      break;
+    default:
+      break;
+  }
+});
+
+button.addEventListener('click', function(event) {
+  event.preventDefault();
+  form.submit();
+});
+}
+</script>
+
+    <div>
+        {% block content -%}
         <div class="container">
             <h1 class="logo">Ardit's web app</h1>
             <strong><nav>
@@ -23,12 +140,8 @@
           </div> 
         <div style="color: #030303">{{title}}</div>
         {% endblock %}
-    </header>
     <div>
-        {% block content -%} 
-        <div style="color: #0400fc">{{title}}</div>
-        {% endblock %}
-    <div>
+
     <footer>
         {% block footer -%} 
         <div style="color: #4af706">{{title}}</div>
