@@ -1,8 +1,8 @@
 # Ввведение в Flask
-
+. venv/bin/activate 
 flask --app main run --debug
 
- jinga2
+jinga2
 
 Перейдите в каталог с проектом 
 

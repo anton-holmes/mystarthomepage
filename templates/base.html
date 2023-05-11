@@ -8,18 +8,17 @@
                 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>  
+  
 {% block title -%} 
-    <title>{{title}}</title>
+    <title>{{title}}</title>  
 {% endblock %}
 </head>
 <body >
-    <!-- <h1 id="demo">test</h1>
-    <button type="button" onclick="myFunction()">Попробовать</button> -->
     {% block header -%}
     <header>
         <div class="container-fluid">
             <div class="row myheader">
-                
+             
               <div class="col-sm">
 
                 <div>
@@ -59,7 +58,13 @@
                 Одна из трёх колонок
               </div>
               <div class="col-sm">
-                Одна из трёх колонок
+                <div id="weather-data"></div>
+                <form>
+                  <label for="city-input">Город:</label>
+                  <input type="text" id="city-input" value="Москва">
+                  <button type="submit" id="submit-button">Изменить</button>
+                </form>
+                <script src="{{ url_for('static', filename='js/weather.js') }}"></script>  
               </div>
             </div>
           </div>
@@ -67,10 +72,40 @@
     </header>
     {% endblock %}
 
-    <form class="search-form">
+<!--
+    <div class="popup">
+      <div class="popup-content">
+        <div class="popup-header">
+
+          <h1>Блокнот</h1>
+          <button class="close-btn">&times;</button>
+        </div>
+        <div class="popup-body">
+          <textarea></textarea>
+        </div>
+      </div>
+    </div>
+
+    <button class="open-popup-btn" onclick="myFunction1()">Открыть блокнот</button> 
+-->
+  <form id="searchForm">
+    <div class="radiobtn">
+    <label><input type="radio" name="searchEngine" value="google" checked> Google</label>
+    <label><input type="radio" name="searchEngine" value="yandex"> Yandex</label>
+    <label><input type="radio" name="searchEngine" value="duckduckgo"> DuckDuckGo</label>
+    <label><input type="radio" name="searchEngine" value="yahoo"> Yahoo</label>
+    <label><input type="radio" name="searchEngine" value="baidu"> Baidu</label>
+    </div>
+    <div class="searchfrm">
+    <input type="text" id="searchInput" placeholder="Введите запрос">
+    <button type="submit" id="searchButton">Найти</button>
+    <div>
+  </form>
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>  
+    <!-- <form class="search-form">
         <div class="search-input-wrapper">
           <input type="text" class="search-input" placeholder="Search">
-          <button type="submit" class="search-button">
+          <button type="submit" class="search-button" onclick="myFunction1()>
             <i class="fa fa-search"></i>
         </button>
         </div>
@@ -86,9 +121,9 @@
           <input type="radio" id="baidu" name="search-engine" value="baidu">
           <label for="baidu">Baidu</label>
         </div>
-      </form>
+      </form>  -->
 
-<script>
+<!-- <script>
 function searchtest() {
  const form = document.querySelector('.search-form');
 const input = form.querySelector('.search-input');
@@ -125,7 +160,7 @@ button.addEventListener('click', function(event) {
   form.submit();
 });
 }
-</script>
+</script> -->
 
     <div>
         {% block content -%}
