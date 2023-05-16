@@ -55,7 +55,9 @@
               </div>
 
               <div class="col-sm">
-                Одна из трёх колонок
+
+               Начните вводить текст здесь
+
               </div>
               <div class="col-sm">
                 <div id="weather-data"></div>
@@ -72,95 +74,37 @@
     </header>
     {% endblock %}
 
-<!--
-    <div class="popup">
-      <div class="popup-content">
-        <div class="popup-header">
-
-          <h1>Блокнот</h1>
-          <button class="close-btn">&times;</button>
-        </div>
-        <div class="popup-body">
-          <textarea></textarea>
-        </div>
-      </div>
-    </div>
-
-    <button class="open-popup-btn" onclick="myFunction1()">Открыть блокнот</button> 
--->
   <form id="searchForm">
     <div class="radiobtn">
-    <label><input type="radio" name="searchEngine" value="google" checked> Google</label>
-    <label><input type="radio" name="searchEngine" value="yandex"> Yandex</label>
-    <label><input type="radio" name="searchEngine" value="duckduckgo"> DuckDuckGo</label>
-    <label><input type="radio" name="searchEngine" value="yahoo"> Yahoo</label>
-    <label><input type="radio" name="searchEngine" value="baidu"> Baidu</label>
+    <label><input type="radio" name="searchEngine" value="google" checked> <span>Google</span> </label>
+    <label><input type="radio" name="searchEngine" value="yandex"> <span>Yandex</span> </label>
+    <label><input type="radio" name="searchEngine" value="duckduckgo"> <span>DuckDuckGo</span>  </label>
+    <label><input type="radio" name="searchEngine" value="yahoo"> <span>Yahoo</span> </label>
+    <label><input type="radio" name="searchEngine" value="baidu"> <span>Baidu</span>  </label>
     </div>
     <div class="searchfrm">
     <input type="text" id="searchInput" placeholder="Введите запрос">
     <button type="submit" id="searchButton">Найти</button>
-    <div>
+    </div>
   </form>
-<script src="{{ url_for('static', filename='js/search.js') }}"></script>  
-    <!-- <form class="search-form">
-        <div class="search-input-wrapper">
-          <input type="text" class="search-input" placeholder="Search">
-          <button type="submit" class="search-button" onclick="myFunction1()>
-            <i class="fa fa-search"></i>
-        </button>
-        </div>
-        <div class="search-engine-wrapper">
-          <input type="radio" id="google" name="search-engine" value="google" checked>
-          <label for="google">Google</label>
-          <input type="radio" id="yandex" name="search-engine" value="yandex">
-          <label for="yandex">Yandex</label>
-          <input type="radio" id="duckduckgo" name="search-engine" value="duckduckgo">
-          <label for="duckduckgo">DuckDuckGo</label>
-          <input type="radio" id="yahoo" name="search-engine" value="yahoo">
-          <label for="yahoo">Yahoo</label>
-          <input type="radio" id="baidu" name="search-engine" value="baidu">
-          <label for="baidu">Baidu</label>
-        </div>
-      </form>  -->
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>  
+  
 
-<!-- <script>
-function searchtest() {
- const form = document.querySelector('.search-form');
-const input = form.querySelector('.search-input');
-const engine = form.querySelectorAll('input[name="search-engine"]');
-const button = form.querySelector('.search-button');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const query = input.value;
-  const selectedEngine = form.querySelector('input[name="search-engine"]:checked').value;
-  switch (selectedEngine) {
-    case 'google':
-      window.location.href = `https://www.google.com/search?q=${query}`;
-      break;
-    case 'yandex':
-      window.location.href = `https://yandex.ru/search/?text=${query}`;
-      break;
-    case 'duckduckgo':
-      window.location.href = `https://duckduckgo.com/?q=${query}`;
-      break;
-    case 'yahoo':
-      window.location.href = `https://search.yahoo.com/search?p=${query}`;
-      break;
-    case 'baidu':
-      window.location.href = `https://www.baidu.com/s?wd=${query}`;
-      break;
-    default:
-      break;
-  }
-});
+<button id="notebook-button" class="arrow-button"></button>
+<div id="notebook" class="notebook">
+  <div class="notebook-header">
+    <h2>Заметки</h2>
+    <button class="close-button"></button>
+  </div>
+  <div class="notebook-body">
+    <textarea></textarea>
+  </div>
+  <div class="RP-SCRIPT" style="width:350px;"><a class="RP-LINK" href="https://radiopotok.ru/">Радио онлайн</a></div><script defer src="https://radiopotok.ru/f/script6/59d62af117175e9035b07a344cb70596daf5b8f4bbba01671d71b4d7474acfb1.js" charset="UTF-8"></script>
+</div>
+<script src="{{ url_for('static', filename='js/mynode.js') }}"></script>  
 
-button.addEventListener('click', function(event) {
-  event.preventDefault();
-  form.submit();
-});
-}
-</script> -->
+
 
     <div>
         {% block content -%}
@@ -179,18 +123,34 @@ button.addEventListener('click', function(event) {
 
     <footer>
         {% block footer -%} 
-        <div style="color: #4af706">{{title}}</div>
+        <footer>
+          <div class="footer-wrapper">
+            <div class="footer-column">
+              <h3>О нас</h3>
+              <p>Мы - команда профессионалов, которые создают красивые и функциональные сайты для ваших бизнесов.</p>
+            </div>
+            <div class="footer-column">
+              <h3>Контакты</h3>
+              <ul>
+                <li>Электронная почта: info@example.com</li>
+                <li>Телефон: +7 123 456 78 90</li>
+                <li>Адрес: г. Москва, ул. Примерная, д. 1</li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Последние новости</h3>
+              <ul>
+                <li><a href="#">Название новости 1</a></li>
+                <li><a href="#">Название новости 2</a></li>
+                <li><a href="#">Название новости 3</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>© 2021 Название компании. Все права защищены.</p>
+          </div>
+        </footer>
         {% endblock %}
     </footer>
 </body>
 </html>
-
-
-
- <!--   <h1>{{title}}</h1>
-    <h2>Welcome to FlaskApp!</h2>
-    <ul>
-{% for x in mylist %}
-<li>{{x}}</li>
-{% endfor %}
-    </ul> --> 
