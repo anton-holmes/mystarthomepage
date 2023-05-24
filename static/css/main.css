@@ -256,3 +256,26 @@ textarea {
 #searchButton:hover {
   background-color: #0c7cd5;
 }
+
+/* карточки */
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  margin-bottom: 1rem;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  justify-content: space-between;
+}

@@ -80,6 +80,8 @@
         
     </header>
     {% endblock %}
+
+<div class="col-sm">
 <!-- Форма поиска -->
   <form id="searchForm">
     <div class="radiobtn">
@@ -94,7 +96,8 @@
     <button type="submit" id="searchButton">Найти</button>
     </div>
   </form>
-    <script src="{{ url_for('static', filename='js/search.js') }}"></script>  
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script> 
+</div> 
   
 
 <!-- Радио и заметки -->
@@ -112,21 +115,9 @@
 <script src="{{ url_for('static', filename='js/mynode.js') }}"></script>  
 
 
+<!-- Кфрточки -->
 
-    <div>
-        {% block content -%}
-        <div class="container">
-            <h1 class="logo">Ardit's web app</h1>
-            <strong><nav>
-              <ul class="menu">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('aboutme') }}">About</a></li>
-              </ul>
-            </nav></strong>
-          </div> 
-        <div style="color: #030303">{{title}}</div>
-        {% endblock %}
-    <div>
+
 
     <footer>
         {% block footer -%} 
