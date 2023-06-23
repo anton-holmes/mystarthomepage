@@ -69,7 +69,8 @@ if __name__ == '__main__':
 
 Запустим сервер командой 
 `flask --app main run`
-
+`python main.py`
+`python3 main.py`
 ```
  * Serving Flask app 'main'
  * Debug mode: off
@@ -365,8 +366,6 @@ function myFunction() {
   document.getElementById("demo").innerHTML = "Параграф изменен.";
 }
 ```
-
-
 
 *Практические задания*
 1. Cоздайте стартовую страницу (произвольного содержания). Добавьте шаблон в основной файл flask приложения.
